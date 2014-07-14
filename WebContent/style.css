@@ -1,0 +1,66 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:500);
+
+body{
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    background-image: url('images/grey.png');
+}
+h1{
+    margin: 0 0 0 0;
+    color: #a6ca42;
+}
+header{
+    padding: 0;
+    height: 40px;
+    text-align:center;
+    background-color: #1c1c1f;
+}
+.welcome{
+    padding: 20px 0 0 0;
+}
+#home{
+    color: #808080;
+    float: left;
+    text-decoration: none;
+    margin: 4px 0 0 10px;
+}
+#main-wrap{
+    width: 700px;
+    margin: 0 auto;
+}
+.artist{
+    float: left;
+    margin: 0 20px 0 0;
+}
+#header-image{
+    height: 275px;
+    overflow: hidden;
+}
+#header-image img{
+    position:relative;
+    top: -100px;
+}
+.album-info{
+    overflow: hidden;
+    margin: 0 0 20px 0;
+}
+.album-art{
+    float:left;
+    margin: 0 10px 0 0;
+}
+.album-name{
+    font-size: 1.6em;
+}
+.track-list{
+    clear:both;
+}
+.artist-name{
+    margin: 0 0 5px 0;
+}
+table{
+    width: 100%;
+}
+td{
+    border-bottom: 1px solid #333;
+}
