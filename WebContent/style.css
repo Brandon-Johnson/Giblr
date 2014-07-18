@@ -64,3 +64,18 @@ table{
 td{
     border-bottom: 1px solid #333;
 }
+#fb-button-wrap{
+	width: 700px;
+	text-align:center;
+	margin-top: 100px;
+	display: block;
+}
+#fb-login{
+	background: #45619D;
+	border: none;
+	padding: 10px;
+	color: white;
+	border-radius: 2px;
+	width: 200px;
+	
+}
