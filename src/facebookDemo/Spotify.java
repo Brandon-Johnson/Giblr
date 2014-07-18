@@ -1,3 +1,4 @@
+package facebookDemo;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
@@ -56,6 +57,9 @@ public class Spotify {
    public SpotifyData getArtist(String pName) {
       Map<String, Object> res = querySpotify("/v1/search?type=artist&q="+pName);
       
+      //System.out.println(RecursiveDump.dump(res));
+      
+      //Spotify Artist Data
       SpotifyData sad = null;
       
       //Retrieve the id
@@ -66,8 +70,11 @@ public class Spotify {
          ArrayList<Object> items = (ArrayList<Object>) artists.get("items");
          //Get the first artist
          Map<String, Object> item = (Map<String, Object>) items.get(0);
+         //
+         List<Object> images = (List<Object>) item.get("images");
+         String image = (String) ((Map<String, Object>) images.get(0)).get("url");
          //Get the id
-         sad = new SpotifyData((String) item.get("id"), (String) item.get("name"), "");
+         sad = new SpotifyData((String) item.get("id"), (String) item.get("name"), image);
       } catch (Exception e) {}
       
       //return the id
@@ -130,11 +137,12 @@ public class Spotify {
     * 
     * @param args
     */
-   /*public static void main(String args[]) {
+   /*
+    public static void main(String args[]) {
       Spotify spotify = new Spotify();
       SpotifyData artist = spotify.getArtist("Carly Rae Jepsen");
       
-      System.out.println("Artist: "+artist.name);
+      System.out.println("Artist: "+artist.name+"\n"+artist.image);
       System.out.println("----------------");
       
       List<SpotifyData> albums = spotify.getAlbums(artist.id);
@@ -148,19 +156,6 @@ public class Spotify {
       
       System.out.println("----------------");
       
-   }*/
+   }/**/
    
-}
-
-
-class SpotifyData {
-   public String id;
-   public String name;
-   public String image;
-   
-   public SpotifyData(String id, String name, String image) {
-      this.id = id;
-      this.name = name;
-      this.image = image;
-   }
 }

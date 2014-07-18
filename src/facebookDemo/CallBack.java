@@ -1,6 +1,9 @@
 package facebookDemo;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import facebook4j.Facebook;
 import facebook4j.FacebookException;
 import facebook4j.FacebookFactory;
+import facebook4j.Music;
+import facebook4j.ResponseList;
 
 /**
  * Servlet implementation class CallBack
@@ -31,18 +36,27 @@ public class CallBack extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			Facebook facebook = (Facebook)request.getSession().getAttribute("facebook");
-				
-			String oauthCode = request.getParameter("code");
-				
-			try {
-				facebook.getOAuthAccessToken(oauthCode);
-			} catch (FacebookException e) {
-				e.printStackTrace();
-			}
-				
-			response.sendRedirect("index.jsp");
-		
+	      Facebook facebook = (Facebook)request.getSession().getAttribute("facebook");
+         Spotify spotify = new Spotify();
+         List<SpotifyData> sp = new ArrayList<SpotifyData>();
+         
+         try {
+            ResponseList<Music> list = facebook.getMusic();
+               
+            for (Music like : list) {
+               sp.add(spotify.getArtist(like.getName()));
+            }
+               
+         } catch (IllegalStateException e) {
+            e.printStackTrace();
+         } catch (FacebookException e) {
+            e.printStackTrace();
+         }
+			
+         //System.out.println(sp.size());
+         
+         request.setAttribute("sp", sp);
+         request.getRequestDispatcher("artistList.jsp").forward(request, response);
 	}
 
 	/**
