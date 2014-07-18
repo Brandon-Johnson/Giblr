@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,26 +18,17 @@
         <div id="header-image">
             <img src="images/coldplay.jpg">
         </div>
-        <h2>Coldplay</h2>
-        <div class="album">
-            <div class="album-info">
-                <img src="images/ghost-stories.jpg" width="200" class="album-art">
-                <div class="date">2014</div>
-                <div class="album-name">Ghost Stories</div>
-            </div>
-            <table class="track-list">
-                <tr>
-                    <td>#</th>
-                    <td>Song</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Always in My Head</td>
-                </tr>
-
-            </table>
-            <img class="album-art">
-        </div>
+        <h2>${name}</h2>
+        <c:forEach items="${sd}" var="s">
+	        <div class="album">
+	            <div class="album-info">
+	                <img src="${s.image}" width="200" class="album-art">
+	                <div class="album-name">${s.name}</div>
+	            </div>
+	            <iframe src="https://embed.spotify.com/?uri=spotify:album:${s.id}" width="700" height="500" frameborder="0" allowtransparency="true"></iframe>
+	            <img class="album-art">
+	        </div>
+        </c:forEach>
     </div>
 </body>
 </html>

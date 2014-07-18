@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,18 +16,16 @@
     </header>
     <div id="main-wrap">
         <h2 class="welcome">Your Favorite Artists</h2>
-        <a href="artist.html">
-            <div class="artist">
-                <div class="artist-name">Coldplay</div>
-                <img src="images/ghost-stories.jpg" width="150" class="album-art">
-            </div>
-        </a>
-        <a href="artist.html">
-            <div class="artist">
-                <div class="artist-name">Coldplay</div>
-                <img src="images/ghost-stories.jpg" width="150" class="album-art">
-            </div>
-        </a>
+        <c:forEach items="${sp}" var="s">
+		    <a href="AlbumView?a=${s.id}&n=${s.name}">
+	            <div class="artist">
+	                <div class="artist-name">${s.name}</div>
+	                <div style="width: 150px; height: 200px; float: left;">
+    	                <img src="${s.image}" width="150" class="album-art">
+   	                </div>
+	            </div>
+            </a>
+		</c:forEach>
     </div>
 </body>
 </html>
