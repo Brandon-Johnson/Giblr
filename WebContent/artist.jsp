@@ -11,13 +11,10 @@
 </head>
 <body>
     <header>
-        <a href="artistList.jsp" id="home" class="fa fa-home fa-2x"></a>
+        <a href="artistSearch.jsp" id="home" class="fa fa-home fa-2x"></a>
         <h1>Giblr</h1>
     </header>
     <div id="main-wrap">
-        <div id="header-image">
-            <img src="images/coldplay.jpg">
-        </div>
         <h2>${name}</h2>
         <c:forEach items="${sd}" var="s">
 	        <div class="album">

@@ -45,6 +45,9 @@ header{
     overflow: hidden;
     margin: 0 0 20px 0;
 }
+.album{
+	margin-bottom: 50px;
+}
 .album-art{
     float:left;
     margin: 0 10px 0 0;
