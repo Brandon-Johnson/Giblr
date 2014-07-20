@@ -15,17 +15,11 @@
         <h1>Giblr</h1>
     </header>
     <div id="main-wrap">
-        <h2 class="welcome">Your Favorite Artists</h2>
-        <c:forEach items="${sp}" var="s">
-		    <a href="AlbumView?a=${s.id}&n=${s.name}">
-	            <div class="artist">
-	                <div class="artist-name">${s.name}</div>
-	                <div style="width: 150px; height: 200px; float: left;">
-    	                <img src="${s.image}" width="150" class="album-art">
-   	                </div>
-	            </div>
-            </a>
-		</c:forEach>
+	    <div id="search-wrap">
+	    	<label>Search for Artist:</label>
+	        <input type="text" />
+	        <input class="submit" type="submit" value="Search" />
+        </div>
     </div>
 </body>
 </html>
