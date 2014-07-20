@@ -11,17 +11,21 @@
 </head>
 <body>
     <header>
-        <a href="artistList.jsp" id="home" class="fa fa-home fa-2x"></a>
+        <a href="index.html" id="home" class="fa fa-home fa-2x"></a>
         <h1>Giblr</h1>
     </header>
-    <form method="get" action="./Search">
-	    <div id="main-wrap">
-		    <div id="search-wrap">
-		    	<label>Search for Artist:</label>
-		        <input type="text" name="search" />
-		        <input class="submit" type="submit" value="Search" />
-	        </div>
-	    </div>
-    </form>
+    <div id="main-wrap">
+        <h2 class="welcome">Your Favorite Artists</h2>
+        <c:forEach items="${sp}" var="s">
+		    <a href="AlbumView?a=${s.id}">
+	            <div class="artist">
+	                <div class="artist-name">${s.name}</div>
+	                <div style="width: 150px; height: 200px; float: left;">
+    	                <img src="${s.image}" width="150" class="album-art">
+   	                </div>
+	            </div>
+            </a>
+		</c:forEach>
+    </div>
 </body>
 </html>
